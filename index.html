@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<script type="text/javascript" src="d3.min.js"></script>
+  <link href="bootstrap.css" rel="stylesheet" media="screen">
+  <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+ <script src="jquery.js"></script>
+ <script src="bootstrap.js"></script>
+<title>windplay</title>
+
+<link rel="shortcut icon" href="greenenergy.png">
+
+<style type="text/css">
+    body { padding-top: 10px;}
+    table { font-size: 11px; }
+    td { border: 1px solid #ddd; width: 10px; height 10px; }
+    .centerBlock {margin-left:auto; margin-right:auto;}
+    .center {text-align: center;}
+    .header {padding-bottom: 25px;}
+    .geom {stroke: black; fill: none;}
+    .under td { background-color: #F3A9A9; }
+    .over td { background-color: #F3EDA9; }
+    td.fill { background-color: #000 !important; }  
+    .dot {stroke: none; }
+
+    div.fileinputs {
+    position: relative;
+    }
+
+    div.fakefile {
+      position: relative;
+      top: -35px;
+      left: 0px;
+      z-index: 1;
+    }
+      /*see-thru*/
+    input.file {
+      position: relative;
+      text-align: right;
+      -moz-opacity:0 ;
+      filter:alpha(opacity: 0);
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .top {
+    	margin-left: 30px;
+    }
+
+    .textright {
+    	text-align: right;
+    }
+
+    .thumbnails {
+       text-align:center;
+    }
+
+    .thumbnails > li {
+        display: inline-block;
+        *display:inline; /* ie7 fix */
+        float: none; /* this is the part that makes it work */
+    }
+
+    .offset1 {
+        margin-left: 20px;
+    }
+
+    .container {
+       margin-left: 30px;
+       width: 875px;
+    }
+
+    .span7 {
+    	width: 475px;
+    }
+
+    div#right { 
+    width: 300px;
+    float: right;  
+    margin: 10 5px;  
+    	font-size: 22px;
+ }
+
+    </style>
+<!-- the background color is the color surrounding the worksheet-->
+<!--
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image:url('backgroundforWIND.jpg');
+ }
+
+</style>
+
+<style>
+#content {
+margin: 0 auto;
+}
+</style>
+
+<style>
+#site-title {
+    margin: 0;
+    width: 600px;
+}
+</style>
+
+
+<!-- I downloaded TwentyTen Wordpress theme - that is what the mathjax css is based on - and found the css for the show/hide buttons using the inspect element feature, then copied it here-->
+<!--<style type="text/css" id="input">
+#content input,
+#content textarea {
+  color: #F2072E;
+  font-weight: bold;
+}
+
+</style>-->
+
+</head>
+
+
+
+<body>
+
+  <div class="top">
+  <h1>Anaerobic Digeston of Manure to Yield Methane</h1>
+  <h3>Kaleidoscope: Created by Niko Stahl</h3>
+  <p>Move the triangle over the picture to see a kaleidoscopic image in the circle below!</p>
+  </div>
+
+<div id="right">
+<p><i> Click on the towns below</i></p>
+<p><i> below to go to the</i></p>
+<p><i> Energy Math FRQs!</i></p>
+<br/>
+<a target="_blank" href="WindEnergyAmherst.html">Amherst, MA</a>
+<br/><br/>
+<br/>
+<a target="_blank" href="WindEnergyEugene.html">Eugene, OR</a>
+<br/><br/>
+<br/>
+<a target="_blank" href="WindEnergyTiburon.html">Tiburon, CA</a>
+<br/><br/>
+<br/>
+<a target="_blank" href="WindEnergyVashon.html">Vashon, WA</a>
+<br/><br/>
+<br/>
+<a target="_blank" href="WindEnergyWayne.html">Wayne, PA</a>
+<br/><br/>
+<br/>
+</div>
+<div class="container">
+
+      <div class="row">
+
+        <div class="span4">
+
+        <br></br>
+          <div id="image"></div>
+<!-- provided_ice.JPG provided_midtown.jpg provided_sky.JPG -->
+        <!--thumbnails-->
+        <div class="row">
+          <!--<div class="span1">
+          <img id="provided_sky.jpg" src="thumb_sky.png" height="100" width="100" onclick="thumbnailClick(this)">
+          </div>
+          <div class="span1">
+          <img id="provided_midtown.jpg" src="thumb_midtown.png" height="100" width="100" onclick="thumbnailClick(this)">
+          </div>
+          <div class="span1">
+          <img id="provided_ice.jpg" src="thumb_ice.png" height="100" width="100" onclick="thumbnailClick(this)">
+          </div>-->
+        </div>
+
+        </div><!--/span4-->
+
+        <div class="span7 offset1">
+          <a id='downloadLink' target="_blank">
+          <canvas id="kaleidoCanvas" width="500" height="500" style=""></canvas>
+          </a>
+        </div><!--/span8-->
+    </div><!--/row-->
+  </div><!--/container-->
+
+<script>
+    
+    function thumbnailClick(tag) {
+      imgPath = tag.id;
+      d3.select('#theImage').attr(imgPath);
+      loadCanvasImage();
+    }
+    
+    //function to handle file selection and loading
+    function fileSelected(){
+     var f = event.target.files[0];
+
+     if (f.type.match('image.*')) {
+
+
+        var reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = function(theFile) {
+          console.log('Loaded the file');
+          imgPath = event.target.result;
+          d3.select('#theImage').attr(imgPath);
+          //update canvas image
+          loadCanvasImage();
+          };
+        // Read in the image file as a data URL.
+        //reader.readAsDataURL(f);
+      }
+      else {
+        console.log('Not an image file!');
+      }
+
+
+    }
+
+    function loadCanvasImage() {
+
+      imageObj.onload = function() {
+        setSvgToImageScaleFactor();
+        setArcOriginLimits();
+        imageOrigin = {x: -(arcOrigin.x-whiteSpace.x), y: -(arcOrigin.y-whiteSpace.y)};
+        draw(imageObj);
+
+      };
+      imageObj.src = imgPath;
+
+    }
+
+    function setArcOriginLimits() {
+      arcOriginLimits = {};
+      arcOriginLimits['xmin'] = whiteSpace.x;
+      arcOriginLimits['xmax'] = width-whiteSpace.x-arcObj.outerRadius;
+      arcOriginLimits['ymin'] = whiteSpace.y;
+      arcOriginLimits['ymax'] = height-whiteSpace.y-(arcObj.outerRadius*Math.sin(Math.abs(arcObj.endAngle-arcObj.startAngle)));
+
+      //constrain sampler
+      constrainSampler();
+
+    }
+
+    function constrainSampler() {
+
+      arcOrigin.x = Math.min(arcOrigin.x, arcOriginLimits.xmax);
+      arcOrigin.x = Math.max(arcOrigin.x, arcOriginLimits.xmin);
+      arcOrigin.y = Math.min(arcOrigin.y, arcOriginLimits.ymax);
+      arcOrigin.y = Math.max(arcOrigin.y, arcOriginLimits.ymin);
+
+          d3.select('#theClipPath')
+        .attr("transform", "translate(" + (arcOrigin.x) + "," + (arcOrigin.y) + ")");
+    d3.select('#refGroup')
+      .attr("transform", "translate(" + (arcOrigin.x) + "," + (arcOrigin.y) + ")");
+
+    }
+
+    function setSvgToImageScaleFactor() {
+      whiteSpace = {};
+      if( imageObj.width === Math.max(imageObj.width, imageObj.height)) {
+        scaleFactor = imageObj.width/width;
+        whiteSpace.x = 0;
+        whiteSpace.y = (height-(imageObj.height/scaleFactor))/2;
+      }
+      else {
+        scaleFactor = imageObj.height/height;
+        whiteSpace.x = (width-(imageObj.width/scaleFactor))/2;
+        whiteSpace.y = 0;
+      }
+
+    }
+
+    function dragmove(d) {
+    arcOrigin.x += d3.event.dx;
+    arcOrigin.y += d3.event.dy;
+
+    constrainSampler();
+
+    imageOrigin.x = -(arcOrigin.x-whiteSpace.x);
+    imageOrigin.y = -(arcOrigin.y-whiteSpace.y);
+
+    updateCanvas();
+
+    }
+
+    function updateCanvas() {
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    draw(imageObj);
+
+    }
+
+    function drawClipping(image) {
+
+       //draw arc
+      context.beginPath();
+      context.moveTo(0,0);
+      context.arc(0,0, radius, startAngle, endAngle);
+      context.closePath();
+
+      context.clip();
+      context.drawImage(image, imageOrigin.x, imageOrigin.y, image.width/scaleFactor, image.height/scaleFactor);
+    }
+
+    function draw(image) {
+
+      var wedgeAngle = Math.abs(endAngle-startAngle);
+      var rotations = Math.PI/wedgeAngle;
+      context.save();
+      for(var j=0; j<rotations; j++) {
+        //context.save();
+        context.rotate(2*wedgeAngle)
+        for(var i=0; i<2;i++) {
+          context.save();
+          context.scale(1,Math.pow(-1, i));
+          drawClipping(image);
+          context.restore();
+        }
+      }
+    //context.restore();
+        //dataURL = canvas.toDataURL();
+       //document.getElementById('downloadLink');
+    }
+
+
+//////////////////////execute//////////////////////
+
+
+//jquery
+$(document).ready(function(){
+    $('#fselect').change(fileSelected);
+    });
+    //interaction
+    var width = 250,
+        height = 250,
+        padding = 0;
+    var scaleFactor, whiteSpace, arcOriginLimits;
+
+    var drag = d3.behavior.drag()
+        .origin(arcOrigin)
+        .on("drag", dragmove);
+    
+    var imgPath = "pebblespillows.JPG";
+
+    //sampler setup//
+    var svg = d3.select('#image')
+              .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .attr('id', 'imageSVG');
+
+    //add def tag
+    var defsTag = svg.append('defs');
+
+
+    var srcImage = svg.append('g')
+          .attr('id', 'imageGroup')
+          .attr('opacity', .5)
+          .attr("transform", "translate(" + (padding/2) + "," + (padding/2) + ")")
+        .append('svg:image')
+          .attr('id', 'theImage')
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr("class", "dot")
+          .attr('width', width)
+          .attr('height', height)
+          .attr('xlink:href', imgPath);
+
+    //define path for clipping
+    var pieAngle = Math.PI/8;
+    var pieStartAngle = Math.PI/2;
+    var arcOrigin = {x: width/3, y:height/3};
+    var arc = d3.svg.arc();
+    var arcObj = {innerRadius: 0,
+                  outerRadius: width/3,
+                  startAngle: pieStartAngle,
+                  endAngle: pieStartAngle+pieAngle};
+
+
+    var pathTag = defsTag.selectAll('path').data([arcObj])
+      .enter().append('path')
+            .attr('id', 'arcPath')
+            .attr('class', 'geom')
+            .attr('d', function(d) {return arc(d);});
+
+    var clipTag = defsTag.append('clipPath')
+                          .attr('id', 'theClipPath')
+                          .attr("transform", "translate(" + (arcOrigin.x) + "," + (arcOrigin.y) + ")");
+
+    clipTag.selectAll('path').data([arcObj])
+      .enter().append('path')
+            .attr('class', 'geom')
+            .attr('d', function(d) {return arc(d);});
+
+    //draw clipping path for reference
+    svg.append('g')
+        .attr('id', 'refGroup')
+        .attr("transform", "translate(" + (arcOrigin.x) + "," + (arcOrigin.y) + ")")
+      .append('svg:use')
+        .attr('xlink:href', '#arcPath')
+        .attr('class', 'geom');
+
+
+    //add clipped image
+    svg.append('svg:use')
+        .attr('id', 'wedge')
+        .attr('xlink:href', '#theImage')
+        .attr('opacity', 1)
+        .attr('clip-path', 'url(#theClipPath)')
+        .call(drag);
+
+
+    //canvas drawing//
+      //setup
+      var canvas = document.getElementById('kaleidoCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+      var radius = arcObj.outerRadius;
+      var startAngle = 0;
+      var endAngle = startAngle+pieAngle;
+      var counterClockwise = false;
+      var imageOrigin;
+
+      //center kaleidoscope
+      context.save();
+      context.translate(x,y);
+      context.scale((canvas.width/2)/radius, (canvas.width/2)/radius);
+
+      var imageObj = new Image();
+      //imageObj.crossOrigin ="anonymous"; -- this generated following error -- Image from origin 'file://' has been blocked from loading by Cross-Origin Resource Sharing policy: Received an invalid response. Origin 'null' is therefore not allowed access. 
+      //var dataURL;
+
+      loadCanvasImage();
+
+
+    </script>
+
+</body>
+<br>
+<p style="font-size:small; color:gray; text-align:center;">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">APES Practice for Energy Math</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.physics.drexel.edu/~tim" property="cc:attributionName" rel="cc:attributionURL">Jenny Hoffman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+<br/>
+This software incorporates the MathJax TEX and CSS libraries, the JQuery
+Google API, and D3.js.
+<br>"Kaleidoscope" interactive is adapted from http://www.rnstahl.net/kaleidoscope/kaleidoscope.html by Niko Stahl.
+</html>

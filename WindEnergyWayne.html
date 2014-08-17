@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+<title>Wind Energy FRQ </title>
+
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="shortcut icon" href="greenenergy.png">
+<link rel="stylesheet" type="text/css" media="all" href="http://www.mathjax.org/wp-content/themes/mathjax/style.css" />
+
+<script type='text/javascript' src='http://www.mathjax.org/wp-content/plugins/syntax-highlighter-mt/scripts/shCore.js'></script>
+<script type='text/javascript' src='http://www.mathjax.org/wp-content/plugins/syntax-highlighter-mt/scripts/shAutoloader.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+<link type='text/css' rel='stylesheet' href='http://www.mathjax.org/wp-content/plugins/syntax-highlighter-mt/styles/shCore.css'/>
+<link type='text/css' rel='stylesheet' href='http://www.mathjax.org/wp-content/plugins/syntax-highlighter-mt/styles/shThemeDefault.css'/>
+
+<!-- the background color is the color surrounding the worksheet-->
+
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image:url('backgroundforWIND.jpg');
+ }
+
+</style>
+
+<style>
+#content {
+margin: 0 auto;
+}
+</style>
+
+<style>
+#site-title {
+    margin: 0;
+    width: 600px;
+}
+</style>
+
+
+<style type="text/css" id="math-header-css">
+.math-header, .section-header {
+    background: #afeb10;
+    border-top: 1px solid #ccc;
+    color: ##FFBF00;
+    font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-shadow: 0 0 0
+}
+
+</style>
+
+<!-- I downloaded TwentyTen Wordpress theme - that is what the mathjax css is based on - and found the css for the show/hide buttons using the inspect element feature, then copied it here-->
+<style type="text/css" id="input">
+#content input,
+#content textarea {
+  color: #F2072E;
+  font-weight: bold;
+}
+
+</style>
+
+
+<script>
+$(document).ready(function() {
+  $('showhide').hide();
+});
+</script>
+
+<script type="text/javascript">
+
+/**
+ * Returns a random number between min and max
+ */
+function getRandomArb (min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+/**
+ * Returns a random integer between min and max
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/** Jenny found this, but not sure if it is needed - should try to remove it and see if answers still round*/
+
+function answertoproblem (number) {
+    return Math.round();
+}
+
+/**
+ * Jenny found this to add commas to integers
+ */
+function digits (number) { 
+    return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); 
+}
+
+</script>
+
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+
+  });
+
+</script>
+
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+</head>
+
+
+
+<body class="page page-id-612 page-child parent-pageid-13 page-template-default custom-background">
+
+<div id="wrapper" class="hfeed">
+  <div id="header">
+    <div id="masthead">
+
+	<div id="branding" role="banner">
+           <div id="site-title">
+        	<span>AIS APES 2014 -- Practice for Energy Math</span>
+ 	   </div>
+	  <div id="site-description"></div><!--I moved the Practice for Energy Math to the site title above think it looks cleaner-->
+        </div>
+       </div><!-- #branding -->
+     </div> 
+   
+    <div class="clear"></div>
+<br/><br/>
+<div id="main">
+ <div id="container">
+  <div id="content" role="main">
+    <div id="post-612" class="post-612 page type-page status-publish hentry">
+
+<div class="showhide" id="showhide">
+     <h1 class="entry-title">Converting From Coal to Wind Energy</h1>
+<br/>
+<script>
+  
+       var townis = "Wayne";
+       var numhouseholds = 2000;
+       var coalplantcapacity = 15;
+       var avgkwhperhousehold = 10000;
+       var costperkwh = .20;
+       var windturbinecapacity = 1.2
+       var windturbinecost = 2500000
+       var answertoproblem1 = (coalplantcapacity*1000*8000);
+       var answertoproblem2 = (numhouseholds*avgkwhperhousehold);
+       var answertoproblem3 = (answertoproblem2*25);
+       var answertoproblem4 = (10*windturbinecost);
+       var answertoproblem5 = (answertoproblem4/answertoproblem3).toFixed(2);
+       
+  </script>
+
+  
+  <p><b><script>document.write(townis)</script></b> is a community consisting of <b><script>document.write(numhouseholds.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> homes.  A small coal-burning power plant currently supplies electricity for the town.  The capacity of the power plant is <b><script>document.write(coalplantcapacity)</script></b> MW and the average household consumes <b><script>document.write(avgkwhperhousehold.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> kWh of electricity each year.  The price paid to the electric utility by West Fremont residents for this energy is $<b><script>document.write(costperkwh)</script></b> per kWh.  The town leaders are considering a plan, the <b><script>document.write(townis)</script></b> Wind Project, to generate their own electricity using 10 wind turbines that would be located on the wooded ridges surrounding the town.  Each wind turbine would have a capacity of <b><script>document.write(windturbinecapacity)</script></b> MW and each would cost the town <b>$<script>document.write(windturbinecost.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> to purchase, finance, and operate for <b>25</b> years.</p>
+
+ 
+ <br/><br/>
+
+  
+
+<div class="math-header">Assuming that the existing power plant can operate at full capacity for 8,000 hrs/yr, how many kWh of electricity can be produced by the plant in a year?</div>
+
+
+<input type="submit" name="hideh2" value="Hide Solution" id="hideh2" /> <input type="submit" name="showh2" value="Show Solutions" id="showh2" />
+
+<br/><br/>
+<div class="showhide2" id="showhide2">
+
+ <script>
+  document.write("\\[ \\left("+coalplantcapacity+"\\ MW\\right) \\times \\left(1,000\\frac{\ kW}{\ MW}\\right) \\times \\left(8,000\\frac{\ hrs}{\ yr}\\right) =\\ "+answertoproblem1.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ kWh\\]");
+  </script>
+
+</div>
+<script>
+
+$('#showhide2').hide(2600, function() {});
+
+
+$('#showh2').click(function() {
+  $('#showhide2').show('slow', function() {});
+});
+
+$('#hideh2').click(function() {
+  $('#showhide2').hide('slow', function() {});
+});
+</script>
+
+<br/><br/>
+
+<div class="math-header">At the current rate of electrical energy use per household, how many kWh of electrical energy does the community consume in one year?</div>
+
+<input type="submit" name="hideh3" value="Hide Solution" id="hideh3" /> <input type="submit" name="showh3" value="Show Solutions" id="showh3" />
+
+<br/><br/>
+<div class="showhide3" id="showhide3">
+
+  
+<script>
+  document.write("\\[ \\left("+numhouseholds.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ homes\\right) \\times \\left("+avgkwhperhousehold.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\frac{\ kWh}{\ home/yr}\\right) =\\ "+answertoproblem2.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\frac{\ kWh}{\ yr} \\]");
+  </script>
+
+  </div>
+  <script>
+
+$('#showhide3').hide(2600, function() {});
+
+
+$('#showh3').click(function() {
+  $('#showhide3').show('slow', function() {});
+});
+
+$('#hideh3').click(function() {
+  $('#showhide3').hide('slow', function() {});
+});
+</script>
+  
+ <br/><br/>
+
+  
+<div class="math-header">Compare your answers in parts 1 and 2 and explain why you would or would not expect the numbers to be the same.</div>
+
+<input type="submit" name="hideh4" value="Hide Solution" id="hideh4" /> <input type="submit" name="showh4" value="Show Solutions" id="showh4" />
+
+<br/><br/>
+<div class="showhide4" id="showhide4">
+
+<script>
+  document.write("explanation \ goes \ here");
+</script>
+
+</div>
+
+  <script>
+
+$('#showhide4').hide(2600, function() {});
+
+
+$('#showh4').click(function() {
+  $('#showhide4').show('slow', function() {});
+});
+
+$('#hideh4').click(function() {
+  $('#showhide4').hide('slow', function() {});
+});
+</script>
+  
+<br/><br/>
+
+  
+<div class="math-header">Assume that the electrical energy needs of the community do not change during the 25 year lifetime of the wind turbines, would would be the cost to the community of the electricity supplied by the <b><script>document.write(townis)</script></b> Wind Project over 25 years?  Express your answer in dollars/kWh.
+
+
+</div>
+
+<input type="submit" name="hideh5" value="Hide Solution" id="hideh5" /> <input type="submit" name="showh5" value="Show Solutions" id="showh5" />
+
+<br/><br/>
+
+<div class="showhide5" id="showhide5">
+  
+<script>
+  document.write("\\[ \\left("+answertoproblem2.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\frac{\ kWh}{\ yr}\\right) \\times \\left(25\\ years\\right) =\\ "+answertoproblem3.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ kWh\\]");
+
+  document.write("\\[ \\left(10\\ turbines\\right) \\times \\left("+windturbinecost.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\frac{\ dollars}{\ turbine}\\right) =\\ "+answertoproblem4.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ dollars\\]");
+
+  document.write("\\[ \\left("+answertoproblem4.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ dollars\\right) \\div \\left("+answertoproblem3.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ kWh\\right) =\\ "+answertoproblem5+"\\frac{\ dollars}{\ kWh} \\]");
+</script>
+
+
+</div>
+
+  <script>
+
+$('#showhide5').hide(2600, function() {});
+
+
+$('#showh5').click(function() {
+  $('#showhide5').show('slow', function() {});
+});
+
+$('#hideh5').click(function() {
+  $('#showhide5').hide('slow', function() {});
+});
+</script>
+
+ <br/><br/>
+
+</body>
+<p style="font-size:xx-small; color:gray; text-align:center;">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">APES Practice for Energy Math</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.physics.drexel.edu/~tim" property="cc:attributionName" rel="cc:attributionURL">Jenny Hoffman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
+<br/>
+This software incorporates the MathJax TEX and CSS libraries and JQuery
+Google API.</p>
+
+</html>
