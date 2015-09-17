@@ -6,10 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <script type="text/javascript" src="d3.min.js"></script>
   <link href="bootstrap.css" rel="stylesheet" media="screen">
-  <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
- <script src="jquery.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- MUST use CDN for JQuery-->
  <script src="bootstrap.js"></script>
-<title>windplay</title>
+<title>windplay-1</title>
 
 <link rel="shortcut icon" href="greenenergy.png">
 
@@ -50,173 +49,77 @@
     	margin-left: 30px;
     }
 
-    .textright {
-    	text-align: right;
+    #wrapper {
+      width: 100%;
+      height: 550px;
+      clear: both;
     }
 
-    .thumbnails {
-       text-align:center;
+    #image {
+      width: 25%;
+      float: left;
     }
 
-    .thumbnails > li {
-        display: inline-block;
-        *display:inline; /* ie7 fix */
-        float: none; /* this is the part that makes it work */
+    #kaleidoscope {
+    	width: 50%;
+      float: left;
     }
 
-    .offset1 {
-        margin-left: 20px;
-    }
-
-    .container {
-       margin-left: 30px;
-       width: 875px;
-    }
-
-    .span7 {
-    	width: 475px;
-    }
-
-    div#right { 
-    width: 300px;
-    float: right;  
-    margin: 10 5px;  
-    	font-size: 22px;
+    #right { 
+    width: 25%;
+    font-size: 20px;
+    float: left;
  }
 
     </style>
-<!-- the background color is the color surrounding the worksheet-->
-<!--
-<style type="text/css" id="custom-background-css">
-body.custom-background { background-image:url('backgroundforWIND.jpg');
- }
-
-</style>
-
-<style>
-#content {
-margin: 0 auto;
-}
-</style>
-
-<style>
-#site-title {
-    margin: 0;
-    width: 600px;
-}
-</style>
-
-
-<!-- I downloaded TwentyTen Wordpress theme - that is what the mathjax css is based on - and found the css for the show/hide buttons using the inspect element feature, then copied it here-->
-<!--<style type="text/css" id="input">
-#content input,
-#content textarea {
-  color: #F2072E;
-  font-weight: bold;
-}
-
-</style>-->
 
 </head>
 
-
-
 <body>
 
-  <div class="top">
-  <h1>Anaerobic Digeston of Manure to Yield Methane</h1>
-  <h3>Kaleidoscope: Created by Niko Stahl</h3>
-  <p>Move the triangle over the picture to see a kaleidoscopic image in the circle below!</p>
-  </div>
-
-<div id="right">
-<p><i> Click on the towns below</i></p>
-<p><i> below to go to the</i></p>
-<p><i> Energy Math FRQs!</i></p>
-<br/>
-<a target="_blank" href="WindEnergyAmherst.html">Amherst, MA</a>
-<br/><br/>
-<br/>
-<a target="_blank" href="WindEnergyEugene.html">Eugene, OR</a>
-<br/><br/>
-<br/>
-<a target="_blank" href="WindEnergyTiburon.html">Tiburon, CA</a>
-<br/><br/>
-<br/>
-<a target="_blank" href="WindEnergyVashon.html">Vashon, WA</a>
-<br/><br/>
-<br/>
-<a target="_blank" href="WindEnergyWayne.html">Wayne, PA</a>
-<br/><br/>
-<br/>
+<div class="top">
+  <h1>Wind Energy</h1>
+  <h3>Move the triangle over the picture to see a kaleidoscopic image in the circle below!</h3>
+  <p>Kaleidoscope adapted from code created by Niko Stahl</p>
 </div>
-<div class="container">
 
-      <div class="row">
+<br></br>
 
-        <div class="span4">
+<div id="wrapper">
+    <div id="image"></div>
 
-        <br></br>
-          <div id="image"></div>
-<!-- provided_ice.JPG provided_midtown.jpg provided_sky.JPG -->
-        <!--thumbnails-->
-        <div class="row">
-          <!--<div class="span1">
-          <img id="provided_sky.jpg" src="thumb_sky.png" height="100" width="100" onclick="thumbnailClick(this)">
-          </div>
-          <div class="span1">
-          <img id="provided_midtown.jpg" src="thumb_midtown.png" height="100" width="100" onclick="thumbnailClick(this)">
-          </div>
-          <div class="span1">
-          <img id="provided_ice.jpg" src="thumb_ice.png" height="100" width="100" onclick="thumbnailClick(this)">
-          </div>-->
-        </div>
+    <div id="kaleidoscope">
+          
+        <canvas id="kaleidoCanvas" width="500" height="500" style="">></canvas>
+          
+    </div>
 
-        </div><!--/span4-->
+    <div id="right">
+        <p><i> Click on the towns below</i></p>
+        <p><i> below to go to the</i></p>
+        <p><i> Energy Math FRQs!</i></p>
+         <br/>
+         <a target="_blank" href="WindEnergyAmherst.html">Amherst, MA</a>
+          <br/><br/>
+          <br/>
+          <a target="_blank" href="WindEnergyEugene.html">Eugene, OR</a>
+          <br/><br/>
+          <br/>
+          <a target="_blank" href="WindEnergyTiburon.html">Tiburon, CA</a>
+          <br/><br/>
+          <br/>
+          <a target="_blank" href="WindEnergyVashon.html">Vashon, WA</a>
+          <br/><br/>
+          <br/>
+        <a target="_blank" href="WindEnergyWayne.html">Wayne, PA</a>
+        <br/><br/>
+         <br/>
+    </div>
 
-        <div class="span7 offset1">
-          <a id='downloadLink' target="_blank">
-          <canvas id="kaleidoCanvas" width="500" height="500" style=""></canvas>
-          </a>
-        </div><!--/span8-->
-    </div><!--/row-->
-  </div><!--/container-->
+</div>
 
 <script>
     
-    function thumbnailClick(tag) {
-      imgPath = tag.id;
-      d3.select('#theImage').attr(imgPath);
-      loadCanvasImage();
-    }
-    
-    //function to handle file selection and loading
-    function fileSelected(){
-     var f = event.target.files[0];
-
-     if (f.type.match('image.*')) {
-
-
-        var reader = new FileReader();
-
-        // Closure to capture the file information.
-        reader.onload = function(theFile) {
-          console.log('Loaded the file');
-          imgPath = event.target.result;
-          d3.select('#theImage').attr(imgPath);
-          //update canvas image
-          loadCanvasImage();
-          };
-        // Read in the image file as a data URL.
-        //reader.readAsDataURL(f);
-      }
-      else {
-        console.log('Not an image file!');
-      }
-
-
-    }
-
     function loadCanvasImage() {
 
       imageObj.onload = function() {
@@ -312,26 +215,17 @@ margin: 0 auto;
         //context.save();
         context.rotate(2*wedgeAngle)
         for(var i=0; i<2;i++) {
-          context.save();
+          context.save(); 
           context.scale(1,Math.pow(-1, i));
           drawClipping(image);
-          context.restore();
+          context.restore(); 
         }
       }
-    //context.restore();
-        //dataURL = canvas.toDataURL();
-       //document.getElementById('downloadLink');
     }
 
 
 //////////////////////execute//////////////////////
 
-
-//jquery
-$(document).ready(function(){
-    $('#fselect').change(fileSelected);
-    });
-    //interaction
     var width = 250,
         height = 250,
         padding = 0;
@@ -341,7 +235,7 @@ $(document).ready(function(){
         .origin(arcOrigin)
         .on("drag", dragmove);
     
-    var imgPath = "pebblespillows.JPG";
+    var imgPath = "pebblespillows.jpg";
 
     //sampler setup//
     var svg = d3.select('#image')
@@ -429,8 +323,6 @@ $(document).ready(function(){
       context.scale((canvas.width/2)/radius, (canvas.width/2)/radius);
 
       var imageObj = new Image();
-      //imageObj.crossOrigin ="anonymous"; -- this generated following error -- Image from origin 'file://' has been blocked from loading by Cross-Origin Resource Sharing policy: Received an invalid response. Origin 'null' is therefore not allowed access. 
-      //var dataURL;
 
       loadCanvasImage();
 
@@ -438,6 +330,7 @@ $(document).ready(function(){
     </script>
 
 </body>
+
 <br>
 <p style="font-size:small; color:gray; text-align:center;">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">APES Practice for Energy Math</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.physics.drexel.edu/~tim" property="cc:attributionName" rel="cc:attributionURL">Jenny Hoffman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
