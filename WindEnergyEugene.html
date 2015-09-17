@@ -21,27 +21,21 @@
 <!-- the background color is the color surrounding the worksheet-->
 
 <style type="text/css" id="custom-background-css">
-body.custom-background { background-image:url('backgroundforWIND.jpg');
+body.custom-background { 
+    background-image:url('backgroundforWIND.jpg');
  }
 
-</style>
 
-<style>
 #content {
-margin: 0 auto;
-}
-</style>
-
-<style>
-#site-title {
-    margin: 0;
-    width: 600px;
+    margin: 0 auto;
 }
 </style>
 
 
 <style type="text/css" id="math-header-css">
 .math-header, .section-header {
+    margin-left: 40px;
+    display: inline-block;
     background: #afeb10;
     border-top: 1px solid #ccc;
     color: ##FFBF00;
@@ -60,7 +54,64 @@ margin: 0 auto;
 #content textarea {
   color: #F2072E;
   font-weight: bold;
+  font-size: 30px;
 }
+
+.writing {
+    width: 600px;
+    border-radius: 15px;
+    margin-left: 40px;
+    background: white;
+    opacity: 0.7;
+    display: inline-block;
+    padding: 10px;
+}
+
+.list {
+    line-height: 30px;
+    background: white;
+    list-style-position: inside;
+    opacity: 0.7;
+    width: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+#topitem {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#bottomitem {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.showhideall {
+    background: white;
+    opacity: 0.7;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    margin-left: 300px;
+
+}
+
+input {
+    margin-left: 40px;
+}
+
+.end {
+    background: white;
+    border-radius: 15px;
+    width: 800px;
+    margin: 0 auto;
+    opacity: 0.7;
+    padding: 10px;
+
+
+} 
 
 </style>
 
@@ -121,28 +172,15 @@ function digits (number) {
 
 <body class="page page-id-612 page-child parent-pageid-13 page-template-default custom-background">
 
-<div id="wrapper" class="hfeed">
-  <div id="header">
-    <div id="masthead">
+<br> 
 
-	<div id="branding" role="banner">
-           <div id="site-title">
-        	<span>AIS APES 2014 -- Practice for Energy Math</span>
- 	   </div>
-	  <div id="site-description"></div><!--I moved the Practice for Energy Math to the site title above think it looks cleaner-->
-        </div>
-       </div><!-- #branding -->
-     </div> 
-   
-    <div class="clear"></div>
-<br/><br/>
 <div id="main">
  <div id="container">
   <div id="content" role="main">
     <div id="post-612" class="post-612 page type-page status-publish hentry">
 
 <div class="showhide" id="showhide">
-     <h1 class="entry-title">Converting From Coal to Wind Energy</h1>
+     <h1 class="writing">Converting From Coal to Wind Energy</h1>
 <br/>
 <script>
   
@@ -162,7 +200,7 @@ function digits (number) {
   </script>
 
   
-  <p><b><script>document.write(townis)</script></b> is a community consisting of <b><script>document.write(numhouseholds.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> homes.  A small coal-burning power plant currently supplies electricity for the town.  The capacity of the power plant is <b><script>document.write(coalplantcapacity)</script></b> MW and the average household consumes <b><script>document.write(avgkwhperhousehold.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> kWh of electricity each year.  The price paid to the electric utility by West Fremont residents for this energy is $<b><script>document.write(costperkwh)</script></b> per kWh.  The town leaders are considering a plan, the <b><script>document.write(townis)</script></b> Wind Project, to generate their own electricity using 10 wind turbines that would be located on the wooded ridges surrounding the town.  Each wind turbine would have a capacity of <b><script>document.write(windturbinecapacity)</script></b> MW and each would cost the town <b>$<script>document.write(windturbinecost.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> to purchase, finance, and operate for <b>25</b> years.</p>
+  <p class="writing"><b><script>document.write(townis)</script></b> is a community consisting of <b><script>document.write(numhouseholds.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> homes.  A small coal-burning power plant currently supplies electricity for the town.  The capacity of the power plant is <b><script>document.write(coalplantcapacity)</script></b> MW and the average household consumes <b><script>document.write(avgkwhperhousehold.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> kWh of electricity each year.  The price paid to the electric utility by West Fremont residents for this energy is $<b><script>document.write(costperkwh)</script></b> per kWh.  The town leaders are considering a plan, the <b><script>document.write(townis)</script></b> Wind Project, to generate their own electricity using 10 wind turbines that would be located on the wooded ridges surrounding the town.  Each wind turbine would have a capacity of <b><script>document.write(windturbinecapacity)</script></b> MW and each would cost the town <b>$<script>document.write(windturbinecost.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))</script></b> to purchase, finance, and operate for <b>25</b> years.</p>
 
  
  <br/><br/>
@@ -173,9 +211,9 @@ function digits (number) {
 
 
 <input type="submit" name="hideh2" value="Hide Solution" id="hideh2" /> <input type="submit" name="showh2" value="Show Solutions" id="showh2" />
+<br>
 
-<br/><br/>
-<div class="showhide2" id="showhide2">
+<div class="showhideall" id="showhide2">
 
  <script>
   document.write("\\[ \\left("+coalplantcapacity+"\\ MW\\right) \\times \\left(1,000\\frac{\ kW}{\ MW}\\right) \\times \\left(8,000\\frac{\ hrs}{\ yr}\\right) =\\ "+answertoproblem1.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ kWh\\]");
@@ -199,11 +237,12 @@ $('#hideh2').click(function() {
 <br/><br/>
 
 <div class="math-header">At the current rate of electrical energy use per household, how many kWh of electrical energy does the community consume in one year?</div>
+<br>
 
 <input type="submit" name="hideh3" value="Hide Solution" id="hideh3" /> <input type="submit" name="showh3" value="Show Solutions" id="showh3" />
 
 <br/><br/>
-<div class="showhide3" id="showhide3">
+<div class="showhideall" id="showhide3">
 
   
 <script>
@@ -229,11 +268,12 @@ $('#hideh3').click(function() {
 
   
 <div class="math-header">Compare your answers in parts 1 and 2 and explain why you would or would not expect the numbers to be the same.</div>
+<br>
 
 <input type="submit" name="hideh4" value="Hide Solution" id="hideh4" /> <input type="submit" name="showh4" value="Show Solutions" id="showh4" />
 
 <br/><br/>
-<div class="showhide4" id="showhide4">
+<div class="showhideall" id="showhide4">
 
 <script>
   document.write("explanation \ goes \ here");
@@ -259,15 +299,14 @@ $('#hideh4').click(function() {
 
   
 <div class="math-header">Assume that the electrical energy needs of the community do not change during the 25 year lifetime of the wind turbines, would would be the cost to the community of the electricity supplied by the <b><script>document.write(townis)</script></b> Wind Project over 25 years?  Express your answer in dollars/kWh.
-
-
 </div>
+<br>
 
 <input type="submit" name="hideh5" value="Hide Solution" id="hideh5" /> <input type="submit" name="showh5" value="Show Solutions" id="showh5" />
 
 <br/><br/>
 
-<div class="showhide5" id="showhide5">
+<div class="showhideall" id="showhide5">
   
 <script>
   document.write("\\[ \\left("+answertoproblem2.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\frac{\ kWh}{\ yr}\\right) \\times \\left(25\\ years\\right) =\\ "+answertoproblem3.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"\\ kWh\\]");
@@ -297,7 +336,7 @@ $('#hideh5').click(function() {
  <br/><br/>
 
 </body>
-<p style="font-size:xx-small; color:gray; text-align:center;">
+<p class="end" style="font-size:small; color:dark gray; text-align:center;">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">APES Practice for Energy Math</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.physics.drexel.edu/~tim" property="cc:attributionName" rel="cc:attributionURL">Jenny Hoffman</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.
 <br/>
 This software incorporates the MathJax TEX and CSS libraries and JQuery
